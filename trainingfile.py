@@ -12,10 +12,12 @@ def parse_page(url):
         soup = BeautifulSoup(response.content, "html.parser")
 
         # Находим все элементы с определенным классом
-        elements_with_class = soup.find_all(class_="fh-5 fw-700 text-black")
+        elements_with_class_names = soup.find_all(class_="fh-5 fw-700 text-black")
+        elements_with_class_prices = soup.find_all(class_="fh-4 fw-800 text-white")
 
         # Возвращаем текстовое содержимое найденных элементов
-        return [elements_with_class[element].text for element in range(10)]
+        print([element.text for element in elements_with_class_prices])
+        return [element.text for element in elements_with_class_names]
     else:
         print("Ошибка при получении страницы:", response.status_code)
         return None
