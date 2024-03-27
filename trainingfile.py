@@ -50,15 +50,6 @@ def parse_page(search_text):
                 link = a["href"]
                 if "p/" in link:
                     links.append(link)
-        # for link in links:
-        #     print(link_product(link))
-
-        # all_elements = []
-        # for element in elements_with_class_names:
-        #     all_elements.append(element.text)
-        #     for child in elements_with_class_prices:
-        #         all_elements.append(child.text)
-        #         break
 
         all_elements = list(
             zip(
@@ -67,7 +58,6 @@ def parse_page(search_text):
                 [link_product(link) for link in links],
             )
         )
-        # Возвращаем текстовое содержимое найденных элементов
         return [element for element in all_elements]
 
 
