@@ -49,11 +49,47 @@ def parse_tehnomax(search_text):
         return [x for x in res[:MAX_ITEMS]]
 
 
+def parse_datika(search_text):
+    prepared_text = search_text.replace(
+        " ", "+"
+    )  # аргумент запроса содержит плюсы вместо пробелов
+    response = requests.get(
+        f"https://datika.me/search/?query={prepared_text}"
+    )
+
+    if check_200_status(response.status_code):
+        soup = BeautifulSoup(response.content, "html.parser")
+
+        found = soup.find(class_='product-list products_view_grid')  # сетка продуктов
+        items = found.find_all(attrs={"itemtype":"http://schema.org/Product"})
+        res = []
+        if not found:
+            return []
+        for item in items:
+            title = item.find(attrs={"itemprop": "name"}).text
+            price = item.find(class_='price nowrap').text
+            price = price.replace(',', '').replace(' ', '')
+            price = float(re.search(r'\d+(?:\.\d+)?', price)[0])
+            picture = 'https://datika.me' + item.find(attrs={"itemprop": "image"}).get('src')
+            link = item.find('h5')
+            link = 'https://datika.me' + link.find('a').get('href')
+            res.append({'title': title, 'price': price, 'link': link, 'picture': picture})
+
+        return res
+
+
+def parse_sources(search_text: str):
+    res = {}
+    res['tehnomax'] = parse_tehnomax(search_text)
+    res['datika'] = parse_datika(search_text)
+    return res
+
+
+
 # Create your views here.
 def index(request: HttpRequest):
     if request.method == 'POST':
         search_text = request.POST.get('search_text')  # Получаем значение поля с именем 'query'
-        parsed_data = parse_tehnomax(search_text)
-        return render(request, 'parser/index.html', context={'found_items': parsed_data})
+        return render(request, 'parser/index.html', context={'parsed_sources': parse_sources(search_text)})
     elif request.method == 'GET':
         return render(request, 'parser/index.html')

@@ -1,0 +1,18 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    align-items: center;
+}
+
+.grid-item {
+    width: 50%;
+    margin: 10px; /* Добавляем отступы между элементами */
+    box-sizing: border-box; /* Учитываем отступы в расчетах ширины элемента */
+    text-align: center;
+}
+
+.grid-item img {
+    width: 80%;
+    height: auto;
+}
+
