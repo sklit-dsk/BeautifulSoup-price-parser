@@ -1,23 +1,13 @@
-from django.shortcuts import render
-from django.http import HttpRequest
-from .utils import Pretraga
-
 from bs4 import BeautifulSoup
 import requests
-import base64
 from fake_useragent import UserAgent
 import re
 
+from django.shortcuts import render
+from django.http import HttpRequest
+from services.utils import MulticomEncoder
+
 MAX_ITEMS = 10
-
-
-
-def handle_data(parsed_data: list, source: str):
-    if parsed_data:
-        for i, x in enumerate(parsed_data):
-            print('-' * 15 + f'ITEM {i + 1}' + '-' * 15 + '\n', x)
-    else:
-        print(f'Нет данных. Источник "{source}"')
 
 
 def check_200_status(value: int):
@@ -109,12 +99,12 @@ def parse_datika(search_text):
 
 def parse_multicom(search_text):
     response = requests.get(
-        f"https://www.multicom.me/Pretraga?pretraga={Pretraga().encode(search_text)}",
+        f"https://www.multicom.me/Pretraga?pretraga={MulticomEncoder().encode(search_text)}",
         headers={'User-Agent': UserAgent().random}
     )
     soup = BeautifulSoup(response.content, 'html.parser')
     found = soup.find(class_='artikli d-flex row')
-    print(response.content)
+
     if not found:
         return []
 

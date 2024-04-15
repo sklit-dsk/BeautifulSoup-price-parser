@@ -1,6 +1,4 @@
-import re
-
-class Pretraga:
+class MulticomEncoder:
     def __init__(self):
         self._keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
 
