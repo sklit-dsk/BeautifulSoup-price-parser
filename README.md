@@ -1,1 +1,1 @@
-# website for BeautifulSoup-price-parser
+# Smart Parser
