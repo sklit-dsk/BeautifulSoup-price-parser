@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'parser/css/navbar2.css' %}">
+<nav class="navbar">
+    <ul>
+        <li>SMART PRICE</li>
+        <li>O nama</li>
+        <li>
+            <form action="{% url 'index' %}" method="POST">
+                {% csrf_token %}
+                <div class="search">
+                    <input class="search-items" type="search" placeholder="Search items">
+                </div>
+            </form>
+        </li>
+    </ul>
+</nav>
