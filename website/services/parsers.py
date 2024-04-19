@@ -1,14 +1,15 @@
 from bs4 import BeautifulSoup
 import requests
 from fake_useragent import UserAgent
+from urllib.parse import quote
 import re
 
 from django.shortcuts import render
 from django.http import HttpRequest
 from services.utils import MulticomEncoder
+from services.categories import CATEGORIES
 
-
-MAX_ITEMS = 10
+MAX_ITEMS = 40
 
 
 def check_200_status(value: int):
@@ -18,21 +19,28 @@ def check_200_status(value: int):
     return False
 
 
-def parse_tehnomax(search_text):
-    prepared_text = search_text.replace(
-        " ", "+"
-    )  # аргумент запроса содержит плюсы вместо пробелов
-    response = requests.get(
-        f"https://www.tehnomax.me/index.php?mod=catalog&op=thm_search&search_type=&submited=1&keywords={prepared_text}"
-    )
+def parse_tehnomax(search_text, category: str = None):
+    response = None
+    if category:
+        response = requests.get(
+            f'https://www.tehnomax.me/index.php?mod=catalog&op=thm_search&search_type=products&submited=1&keywords={quote(search_text)}&filters[category]={CATEGORIES[category]["tehnomax"]}&filters[promo]=&filters[stock]=dostupno',
+            headers={'User-Agent': UserAgent().random}
+        )
+    else:
+        prepared_text = search_text.replace(
+            " ", "+"
+        )  # аргумент запроса содержит плюсы вместо пробелов
+        response = requests.get(
+            f'https://www.tehnomax.me/index.php?mod=catalog&op=thm_search&search_type=&submited=1&keywords={prepared_text}',
+            headers={'User-Agent': UserAgent().random}
+        )
 
     if check_200_status(response.status_code):
         soup = BeautifulSoup(response.content, "html.parser")
 
-        found = soup.find(class_='js-product-grid-wrap')  # сетка продуктов
+        found = soup.find_all(class_='product-wrap-grid js-product-ga-wrap')
         if not found:
             return []
-        found = found.find_all(class_='product-wrap-grid js-product-ga-wrap')  # излечение из сетки
         res = []
         for x in found:
             title = x.find(class_='product-name-grid')
@@ -51,16 +59,23 @@ def parse_tehnomax(search_text):
             picture = x.find(id=re.compile(r'prod_pic_\d+')).get('data-src')
             res.append({'title': title.replace('\n', ''), 'price': price, 'link': link, 'picture': picture})
         res.sort(key=lambda x: x['price'])
-        return [x for x in res[:MAX_ITEMS]]
+        return res
 
 
-def parse_datika(search_text):
-    prepared_text = search_text.replace(
-        " ", "+"
-    )  # аргумент запроса содержит плюсы вместо пробелов
-    response = requests.get(
-        f"https://datika.me/search/?query={prepared_text}"
-    )
+def parse_datika(search_text, category: str = None):
+    if category:
+        response = requests.get(
+            f'',
+            headers={'User-Agent': UserAgent().random}
+        )
+    else:
+        prepared_text = search_text.replace(
+            " ", "+"
+        )  # аргумент запроса содержит плюсы вместо пробелов
+        response = requests.get(
+            f"https://datika.me/search/?query={prepared_text}",
+            headers={'User-Agent': UserAgent().random}
+        )
 
     if check_200_status(response.status_code):
         soup = BeautifulSoup(response.content, "html.parser")
@@ -98,11 +113,18 @@ def parse_datika(search_text):
         return res
 
 
-def parse_multicom(search_text):
-    response = requests.get(
-        f"https://www.multicom.me/Pretraga?pretraga={MulticomEncoder().encode(search_text)}",
-        headers={'User-Agent': UserAgent().random}
-    )
+def parse_multicom(search_text, category: str = None):
+    if category:
+        response = requests.get(
+            f"https://www.multicom.me/{CATEGORIES[category]['multicom']}/svi.html?pretraga={quote(search_text)}",
+            headers={'User-Agent': UserAgent().random}
+        )
+    else:
+        response = requests.get(
+            f"https://www.multicom.me/Pretraga?pretraga={MulticomEncoder().encode(search_text)}",
+            headers={'User-Agent': UserAgent().random}
+        )
+
     soup = BeautifulSoup(response.content, 'html.parser')
     found = soup.find(class_='artikli d-flex row')
 
