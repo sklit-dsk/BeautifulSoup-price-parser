@@ -6,7 +6,7 @@ import re
 
 from services.utils import MulticomEncoder
 from services.categories import CATEGORIES
-from .db_manager import search_in_datika_db
+from services.db_manager import search_in_datika_db
 
 MAX_ITEMS = 40
 
@@ -118,32 +118,29 @@ def parse_datika(search_text: str, category: str = None):
         res = search_in_datika_db(search_text, category)
         return res
     else:
-        # TODO: Configure proper parsing algorithm
         prepared_text = search_text.replace(
             " ", "+"
         )  # аргумент запроса содержит плюсы вместо пробелов
         response = requests.get(
             f"https://datika.me/search/?query={prepared_text}",
-            headers={'User-Agent': UserAgent().random}
+            headers={'User-Agent': UserAgent().random},
+            cookies={'products_per_page': '100'}
         )
+
 
     if check_200_status(response.status_code):
         soup = BeautifulSoup(response.content, "html.parser")
 
-        found = soup.find(class_='product-list products_view_grid')  # сетка продуктов
-        if not found:
-            return []
-
-        items = found.find_all(attrs={"itemtype": "http://schema.org/Product", "itemscope": True})
+        items = soup.find_all(attrs={"itemtype": "http://schema.org/Product", "itemscope": True})
         if not items:
             return []
 
         res = []
         for item in items:
-            title = item.find(attrs={"itemprop": "name"})
+            title = item.find('span', attrs={"itemprop": "name"})
             if title:
                 title = title.text
-                if title.lower() not in search_text.lower():
+                if search_text.lower() not in title.lower():
                     continue
             else:
                 continue

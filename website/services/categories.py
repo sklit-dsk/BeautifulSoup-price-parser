@@ -4,15 +4,15 @@ CATEGORIES = {
         'multicom': 'mobilni-telefoni/smartphone-telefoni'
     },
     'laptops': {
-        'tehnomax': '',
-        'multicom': ''
+        'tehnomax': 'LAPTOP%20RA%C4%8CUNARI',
+        'multicom': 'racunari-i-oprema/laptop-racunari'
     },
     'tv': {
-        'tehnomax': '',
-        'multicom': ''
+        'tehnomax': 'TELEVIZORI',
+        'multicom': 'televizori-i-av-tehnika/led-televizor'
     },
     'monitors': {
-        'tehnomax': '',
-        'multicom': ''
+        'tehnomax': 'MONITORI',
+        'multicom': 'racunari-i-oprema/lcd-monitor'
     }
 }

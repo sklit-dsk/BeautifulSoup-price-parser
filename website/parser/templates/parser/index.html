@@ -13,40 +13,31 @@
 </head>
 <body>
 <header>
-    <div class="title-section">
-        <img src="{% static 'parser/images/logo.svg' %}" alt="" srcset="">
-        <h3 class="main-title"><a href="{% url 'index' %}" class="no-decoration">Smart Price</a></h3>
-    </div>
-    <div class="search-section">
-        <form action="{% url 'search_view' %}" method="GET">
-            <input type="text" name="q" id="main-search-input">
-            <button type="button" id="main-search-button"><img src="{% static 'parser/images/search.svg' %}" alt=""
-                                                               srcset=""></button>
-        </form>
-    </div>
+    {% include 'includes/navbar.html' %}
 </header>
 <main>
-    <div class="hero-container">
-        <img src="{% static 'parser/images/hero.jpg' %}" alt="gaming">
-    </div>
+    {% include 'includes/banner.html' %}
+
     <div class="categories-section">
-        <p>Istrazi popularne kategorije</p>
+        <p>Choose one of the most popular category to get the best results!</p>
+
         <div class="categories-container">
-            <div class="computers category">
-                <img src="../../static/parser/images/computer.jpg" alt="computer">
-                <p>Kompjuteri</p>
+            <div class="category" onclick="location.href='{% url 'category_view' category_name='phones' %}'">
+                <img src="{% static 'parser/images/computer.jpg' %}" alt="phones">
+                <p>Phones</p>
             </div>
-            <div class="computers category">
-                <img src="../../static/parser/images/computer.jpg" alt="computer">
-                <p>Kompjuteri</p>
+            <div class="category" onclick="location.href='{% url 'category_view' category_name='laptops' %}'">
+                <img src="{% static 'parser/images/computer.jpg' %}" alt="laptops">
+                <p>Laptops</p>
             </div>
-            <div class="computers category">
-                <img src="../../static/parser/images/computer.jpg" alt="computer">
-                <p>Kompjuteri</p>
+            <div class="category" onclick="location.href='{% url 'category_view' category_name='tv' %}'">
+                <img src="{% static 'parser/images/computer.jpg' %}" alt="tv">
+                <p>TV</p>
             </div>
-            <div class="computers category">
-                <img src="../../static/parser/images/computer.jpg" alt="computer">
-                <p>Kompjuteri</p>
+            <div class="category"
+                 onclick="location.href='{% url 'category_view' category_name='monitors' %}'">
+                <img src="{% static 'parser/images/computer.jpg' %}" alt="monitors">
+                <p>Monitors</p>
             </div>
         </div>
     </div>
