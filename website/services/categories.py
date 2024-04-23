@@ -1,22 +1,18 @@
 CATEGORIES = {
-    'PHONES': {
+    'phones': {
         'tehnomax': 'MOBILNI%20TELEFONI',
-        'datika': 'mobile category',
         'multicom': 'mobilni-telefoni/smartphone-telefoni'
     },
-    'LAPTOPS': {
+    'laptops': {
         'tehnomax': '',
-        'datika': '',
         'multicom': ''
     },
-    'WHITE GOODS': {
+    'tv': {
         'tehnomax': '',
-        'datika': '',
         'multicom': ''
     },
-    'TOOLS': {
+    'monitors': {
         'tehnomax': '',
-        'datika': '',
         'multicom': ''
     }
 }

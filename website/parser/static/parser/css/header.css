@@ -1,0 +1,69 @@
+header {
+
+   position: sticky;
+   left: 0;
+   top: 0;
+   background-color: #0E1E3F;
+   color: white;
+   display: flex;
+   align-items: center;
+   height: 70px;
+   border-bottom: 1px solid white;
+}
+
+.title-section{
+   width: 225px;
+   height: 80%;
+   margin-left: 100px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.main-title{
+   font-size: 2em;
+}
+
+.title-section img {
+   height: 75%;
+}
+.search-section{
+   height: 60%;
+   display: flex;
+   align-items: center;
+   margin-left: 10%;
+   width: clamp(200px, 30%, 1700px);
+}
+.search-section form{
+   position: relative;
+   display: flex;
+   width: 100%;
+   height: 100%;
+}
+
+#main-search-input{
+   text-indent: 20px;
+   font-size: 1.2em;
+   border-radius:1em;
+   width: 100%;
+}
+
+#main-search-button{
+   position: absolute;
+   right: 10px;
+   top: 20%;
+   border: 0;
+   background-color: white;
+   width: 35px;
+   height: 30px;
+   cursor: pointer;
+}
+
+#main-search-button img{
+   width: 100%;
+}
+
+.no-decoration {
+    text-decoration: none; /* Убираем подчеркивание ссылки */
+    color: inherit; /* Наследуем цвет текста от родительского элемента */
+}
