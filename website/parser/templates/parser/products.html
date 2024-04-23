@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'parser/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'parser/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'parser/css/products.css' %}">
+    <script src="{% static 'parser/js/image_handler.js' %}"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Price Search</title>
+</head>
+<body>
+<header>
+    {% include 'includes/navbar.html' %}
+</header>
+{% include 'includes/banner.html' %}
+<main>
+    {% if search_result %}
+        <div class="products-container">
+            {% for item in search_result %}
+                <div class="product">
+                    <img id='productImage' src="{{ item.picture }}" alt="{{ item.title }}">
+                    </script>
+                    <p class="product-title">{{ item.title }}</p>
+                    <p class="product-id-wrapper"><a href="{{ item.link }}">{{ item.shop_name.upper }}</a></p>
+                    <p class="product-price">{{ item.price }} €</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</main>
+</body>
+</html>

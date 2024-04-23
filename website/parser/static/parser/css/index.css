@@ -1,33 +1,41 @@
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 25%);
-    align-items: center;
+.categories-section{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
 }
 
-.grid-item {
-    width: 50%;
-    margin: 10px; /* Добавляем отступы между элементами */
-    box-sizing: border-box; /* Учитываем отступы в расчетах ширины элемента */
-    text-align: center;
+.categories-section p {
+   font-weight: bold;
+   font-size: 1.5rem;
+   color:#0E1E3F;
 }
 
-.grid-item img {
-    width: 100%; /* TODO: Разобраться с размером картинок
-    height: auto;
+.categories-container{
+   display: flex;
+   justify-content: center;
+   gap: 100px;
+   padding-bottom: 100px;
 }
 
-
-.shop-name {
-    display: grid;
-    grid-template-columns: auto;
-    justify-content: center; /* Выравниваем по горизонтали */
-    align-items: center; /* Выравниваем по вертикали */
+.category {
+   padding: 5px;
+   padding-left: 20px;
+   padding-right: 20px;
+   border: 1px solid #0E1E3F;
+   box-shadow: 0px 3px 5px gray;
+   border-radius: 1em;
+   width: 10%;
+   text-align: center;
 }
 
-.empty-result {
-    align-items: center; /* Выравниваем по вертикали */
+.category:hover{
+   border: 1px solid rgb(202, 183, 39);
+   transform: scale(1.01);
+   transition-duration: 0.5s;
 }
 
-ul {
-    list-style-type: none;
+.category img{
+   width: 100%;
 }

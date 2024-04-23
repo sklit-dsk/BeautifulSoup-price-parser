@@ -1,17 +1,28 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      </ul>
-      <form class="d-flex" role="search" action="{% url 'index' %}" method="POST">
-          {% csrf_token %}
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_text">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-</form>
-    </div>
-  </div>
-</nav>
+{% load static %}
+
+<div class="title-section">
+    <img src="{% static 'parser/images/logo.svg' %}" alt="" srcset="">
+    <h3 class="main-title"><a href="{% url 'index' %}" class="no-decoration">Smart Price</a></h3>
+</div>
+<div class="search-section">
+    {% if category %}
+        <form action="{% url 'category_view' category_name=category %}" method="GET">
+            <input type="text" name="q" id="main-search-input">
+            <button type="submit" id="main-search-button"><img src="{% static 'parser/images/search.svg' %}" alt=""
+                                                               srcset=""></button>
+        </form>
+    {% else %}
+        <form action="{% url 'search_view' %}" method="GET">
+            <input type="text" name="q" id="main-search-input">
+            <button type="submit" id="main-search-button"><img src="{% static 'parser/images/search.svg' %}" alt=""
+                                                               srcset=""></button>
+        </form>
+    {% endif %}
+</div>
+<div class="category-note">
+    {% if category %}
+        <p class="main-title">Category:&nbsp&nbsp <b>{{ category.capitalize }}</b></p>
+    {% else %}
+        <p class="main-title">Category:&nbsp&nbsp <b>Not selected</b></p>
+    {% endif %}
+</div>
