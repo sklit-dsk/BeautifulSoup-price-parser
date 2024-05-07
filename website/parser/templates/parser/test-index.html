@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'parser/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'parser/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'parser/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'parser/css/products.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'parser/images/logo.svg' %}">
+    <script src="{% static 'parser/js/display_products.js' %}"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Price Main</title>
+</head>
+<body>
+<header>
+    {% include 'includes/navbar.html' %}
+</header>
+{% include 'includes/banner.html' %}
+<main>
+    <div class="search-container">
+        <form id="search-form" action="{% url 'search_view' %}" method="GET">
+            <input type="text" name="q" id="main-search-input">
+        </form>
+        <button form="search-form" type="submit" id="main-search-button"></button>
+    </div>
+</main>
+<footer>
+</footer>
+</body>
+</html>

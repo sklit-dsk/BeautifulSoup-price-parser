@@ -1,3 +1,13 @@
+main {
+   height: calc(100vh - (60px + 50px)); /* Замени headerHeight и footerHeight на фактические значения высоты header и footer */
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background-color: #0D2043;
+}
+
 .categories-section{
    display: flex;
    flex-direction: column;
@@ -39,3 +49,4 @@
 .category img{
    width: 100%;
 }
+

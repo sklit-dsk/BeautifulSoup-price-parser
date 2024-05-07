@@ -1,79 +1,125 @@
-main{
-   display: flex;
-   justify-content: center;
-   background-color: #F3F2F2;
+#products_window {
+    display: flex;
+    justify-content: center;
+    background-color: #F3F2F2;
 }
 
-.products-container{
-   width: 80%;
-   display: grid;
-   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-   gap: 20px;
-   padding-bottom: 30px;
+
+.products-container {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding-bottom: 30px;
+    padding-top: 12px;
 }
 
 .product {
-   background-color: white;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   text-align: center;
-   padding: 10px;
-   width: 90%;
-   height: 500px;
-   border-radius: 2rem;
-   transition: transform 0.5s;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    width: 150px;
+    height: 300px;
+    border-radius: 2rem;
+    transition: transform 0.5s;
 }
 
-.product:hover{
-   border: 1px solid rgb(202, 183, 39);
-   transform: scale(1.01);
-   transition-duration: 0.5s;
+.product:hover {
+    border: 1px solid rgb(202, 183, 39);
+    transform: scale(1.01);
+    transition-duration: 0.5s;
 }
 
 
 .product-title {
-   margin-top: 15px; 
-   margin-bottom: 5px;
-   font-size: 1.1rem;
-   font-weight: bold;
-   color: #1b3974;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1b3974;
+    height: 25%;
 }
 
-.product img{
-   width: 120px;
-   height: 140px;
+#productImage {
+    max-width: 75%;
+    height: 30%;
+}
+
+.shop_logo {
+    width: 90%;
+    height: 14%;
+    margin-top: 10px;
 }
 
 .product-desc {
-   margin-bottom: 20px;
-   font-size: 0.9rem;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
 }
 
-.product-id-wrapper{
-   background-color: #BBBBBB;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   width: 106%;
-   padding-top: 5px;
-   padding-bottom: 5px;
-   color: white;
-   font-weight: bold;
+.product-id-wrapper {
+    background-color: #BBBBBB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 106%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    font-weight: bold;
 
 }
 
-.product-price{
-   width: 100%;
-   height: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   font-size: 2rem;
-   font-weight: bold;
-
+.product-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 15px;
 }
 
 p {
-   margin: 0;
+    margin: 0;
+}
+
+.modal {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+    height: 7%;
+    border-radius: 1em;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }

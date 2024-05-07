@@ -1,77 +1,102 @@
 header {
-   position: sticky;
-   left: 0;
-   top: 0;
-   background-color: #0E1E3F;
-   color: white;
-   display: flex;
-   align-items: center;
-   height: 70px;
-   border-bottom: 1px solid black;
-   z-index: 1;
+    position: sticky;
+    left: 0;
+    top: 0;
+    background-color: #0E1E3F;
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid black;
+    z-index: 1;
 }
 
-.title-section{
-   width: 225px;
-   height: 80%;
-   margin-left: 100px;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+.title-section {
+    width: 225px;
+    height: 80%;
+    margin-left: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.main-title{
-   font-size: 2em;
+.main-title {
+    font-size: 2em;
 }
 
-.category-note{
-   height: 80%;
-   margin-left: 120px;
-   display: flex;
-   font-size: 0.6em;
-   align-items: center;
+.category-note {
+    height: 80%;
+    margin-left: 120px;
+    display: flex;
+    font-size: 0.6em;
+    align-items: center;
 }
 
 .title-section img {
-   height: 75%;
-}
-.search-section{
-   height: 60%;
-   display: flex;
-   align-items: center;
-   margin-left: 10%;
-   width: clamp(200px, 30%, 1700px);
-}
-.search-section form{
-   position: relative;
-   display: flex;
-   width: 100%;
-   height: 100%;
+    height: 75%;
 }
 
-#main-search-input{
-   text-indent: 20px;
-   font-size: 1.2em;
-   border-radius:1em;
-   width: 100%;
+.search-section {
+    height: 60%;
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+    width: clamp(200px, 30%, 1700px);
 }
 
-#main-search-button{
-   position: absolute;
-   right: 10px;
-   top: 20%;
-   border: 0;
-   background-color: white;
-   width: 35px;
-   height: 30px;
-   cursor: pointer;
+.search-section form {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
 }
 
-#main-search-button img{
-   width: 100%;
+#main-search-input {
+    text-indent: 20px;
+    font-size: 1.2em;
+    border-radius: 1em;
+    width: 400px;
+    height: 30px;
+    margin-bottom: 45px;
+}
+
+#main-search-button {
+    border: 0;
+    width: 35px;
+    height: 30px;
+    cursor: pointer;
+    background: transparent;
+    margin-top: 2px;
+    margin-left: 10px;
+    background-image: url("../images/search-left-1506-svgrepo-com.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#main-search-button img {
+    width: 30px;
+}
+
+.search-container {
+    display: flex;
+}
+
+#loading-gif {
+    width: 30px;
+    height: 30px; /* Устанавливаем желаемую высоту */
+    border: none; /* Удаляем границу */
+    overflow: hidden; /* Скрываем скроллбары */
+    display: none;
 }
 
 .no-decoration {
     text-decoration: none; /* Убираем подчеркивание ссылки */
     color: inherit; /* Наследуем цвет текста от родительского элемента */
+}
+
+footer {
+    background-color: #0E1E3F;
+    height: 70px;
+    display: flex;
+    border-top: 1px solid black;
 }
