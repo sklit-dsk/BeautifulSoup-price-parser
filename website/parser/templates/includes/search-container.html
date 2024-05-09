@@ -1,0 +1,13 @@
+<div class="search-container">
+    <form id="search-form" action="{% url 'search_view' %}" method="GET">
+        <div class="search-input-wrapper">
+            <div class="search-plus-underlined">
+                {{ form.q }}
+                <p class="search-text">Efficient Search Engine for Saving Time and Money!</p>
+            </div>
+            <button form="search-form" type="submit"></button>
+        </div>
+        <p class="category-text">Category: </p>
+        {{ form.category }}
+    </form>
+</div>

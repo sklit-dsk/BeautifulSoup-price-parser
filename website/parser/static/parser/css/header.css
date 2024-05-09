@@ -13,8 +13,9 @@ header {
 
 .title-section {
     width: 225px;
+    min-width: 220px;
     height: 80%;
-    margin-left: 100px;
+    margin-left: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,39 +37,42 @@ header {
     height: 75%;
 }
 
-.search-section {
-    height: 60%;
-    display: flex;
-    align-items: center;
-    margin-left: 10%;
-    width: clamp(200px, 30%, 1700px);
-}
-
-.search-section form {
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 100%;
-}
-
-#main-search-input {
+#id_q {
     text-indent: 20px;
     font-size: 1.2em;
     border-radius: 1em;
     width: 400px;
     height: 30px;
-    margin-bottom: 45px;
+    margin-bottom: 5px;
 }
 
-#main-search-button {
+#search-form {
+    display: flex;
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.search-input-wrapper input[type="text"] {
+    padding-right: 40px; /* Примерный размер кнопки */
+}
+
+.search-input-wrapper button {
     border: 0;
-    width: 35px;
-    height: 30px;
+    position: absolute;
+    top: 3px;
+    right: 9px;
+    height: 26px;
+    width: 26px;
     cursor: pointer;
     background: transparent;
-    margin-top: 2px;
-    margin-left: 10px;
-    background-image: url("../images/search-left-1506-svgrepo-com.svg");
+    background-image: url("../images/search-alt-2-svgrepo-com.svg");
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -77,9 +81,6 @@ header {
     width: 30px;
 }
 
-.search-container {
-    display: flex;
-}
 
 #loading-gif {
     width: 30px;
@@ -99,4 +100,18 @@ footer {
     height: 70px;
     display: flex;
     border-top: 1px solid black;
+}
+
+#id_category {
+    margin-left: 10px;
+    height: 33px;
+    margin-top: 1px;
+    border-radius: 0.35rem;
+    font: inherit;
+    font-size: 0.9em;
+}
+
+.search-plus-underlined {
+    position: relative;
+    text-align: center;
 }

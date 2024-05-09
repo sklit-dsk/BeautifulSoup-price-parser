@@ -159,7 +159,6 @@ def parse_datika(search_text: str, category: str = None):
             picture = 'https://datika.me' + item.find(attrs={"itemprop": "image"}).get('src')
             link = item.find('h5')
             link = 'https://datika.me' + link.find('a').get('href') + '?' + AFFILIATE_PARAMETER
-            print(link)
             res.append({'title': title, 'price': price, 'link': link, 'picture': picture, 'shop_name': 'datika'})
 
         return res

@@ -4,6 +4,7 @@ from django.http import Http404
 
 from services.parsers import *
 from services.categories import CATEGORIES
+from parser.forms import SearchForm
 
 
 def parse_sources(search_text: str, category: str = None):
@@ -17,44 +18,39 @@ def parse_sources(search_text: str, category: str = None):
 
     return united_result
 
+
 def index(request: HttpRequest):
-    return render(request, 'parser/test-index.html')
+    return render(request, 'parser/index.html', {'form': SearchForm()})
 
 
 def search_view(request: HttpRequest):
-    search_text = request.GET.get('q', '')
-    search_result = []
-    if search_text:
-        search_result = parse_sources(search_text)
+    form = SearchForm(request.GET)
+    if form.is_valid():
+        query = form.cleaned_data['q']
+        category = form.cleaned_data['category']
+
+    context = {
+        'search_result': '',
+        'search_query': query,
+    }
+
+    if category == 'none':
+        search_result = parse_sources(query)
+        search_result.sort(key=lambda x: x['price'])
+
+        context['search_result'] = search_result
+        context['form'] = SearchForm()
+        return render(request, 'parser/products.html', context)
+
+    elif category in CATEGORIES.keys():
+
+        search_result = parse_sources(query, category)
+        if search_result:
+            search_result.sort(key=lambda x: x['price'])
+
+        context['search_result'] = search_result
+        context['form'] = SearchForm(initial={'category': category})
+        return render(request, 'parser/products.html', context)
+
     else:
-        return render(request, 'parser/test-index.html')
-
-    search_result.sort(key=lambda x: x['price'])
-
-    context = {
-        'search_result': search_result,
-        'search_query': request.GET.get('q', '')
-    }
-    return render(request, 'parser/test-products.html', context)
-
-
-def search_by_category(request: HttpRequest, category_name: str):
-    if category_name not in CATEGORIES.keys():
         raise Http404
-
-    search_text = request.GET.get('q', '')
-    if not search_text:
-        return render(request, 'parser/test-products.html')
-
-    search_result = []
-    if search_text:
-        search_result = parse_sources(search_text, category_name)
-
-    search_result.sort(key=lambda x: x['price'])
-
-    context = {
-        'search_result': search_result,
-        'search_query': request.GET.get('q', '')
-    }
-
-    return render(request, 'parser/test-products.html', context)

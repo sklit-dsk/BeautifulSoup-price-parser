@@ -5,7 +5,10 @@
     <link rel="stylesheet" href="{% static 'parser/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'parser/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'parser/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'parser/css/products.css' %}">
     <link rel="icon" type="image/png" href="{% static 'parser/images/logo.svg' %}">
+    <script src="{% static 'parser/js/display_products.js' %}"></script>
+    <script src="{% static 'parser/js/categories.js' %}"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,31 +19,9 @@
     {% include 'includes/navbar.html' %}
 </header>
 <main>
-    {% include 'includes/banner.html' %}
-
-    <div class="categories-section">
-        <p>Choose one of the most popular category to get the best results!</p>
-
-        <div class="categories-container">
-            <div class="category" onclick="location.href='{% url 'category_view' category_name='phones' %}'">
-                <img src="{% static 'parser/images/computer.jpg' %}" alt="phones">
-                <p>Phones</p>
-            </div>
-            <div class="category" onclick="location.href='{% url 'category_view' category_name='laptops' %}'">
-                <img src="{% static 'parser/images/computer.jpg' %}" alt="laptops">
-                <p>Laptops</p>
-            </div>
-            <div class="category" onclick="location.href='{% url 'category_view' category_name='tv' %}'">
-                <img src="{% static 'parser/images/computer.jpg' %}" alt="tv">
-                <p>TV</p>
-            </div>
-            <div class="category"
-                 onclick="location.href='{% url 'category_view' category_name='monitors' %}'">
-                <img src="{% static 'parser/images/computer.jpg' %}" alt="monitors">
-                <p>Monitors</p>
-            </div>
-        </div>
-    </div>
+    {% include 'includes/search-container.html' %}
 </main>
+<footer>
+</footer>
 </body>
 </html>

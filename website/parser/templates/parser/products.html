@@ -2,24 +2,47 @@
 {% load static %}
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="{% static 'parser/css/header.css' %}">
     <link rel="stylesheet" href="{% static 'parser/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'parser/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'parser/css/header.css' %}">
     <link rel="stylesheet" href="{% static 'parser/css/products.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'parser/images/logo.svg' %}">
     <script src="{% static 'parser/js/image_handler.js' %}"></script>
+    <script src="{% static 'parser/js/display_products.js' %}"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Price Search</title>
+    <title>Smart Price Main</title>
 </head>
 <body>
 <header>
     {% include 'includes/navbar.html' %}
 </header>
-{% include 'includes/banner.html' %}
 <main>
+    {% include 'includes/search-container.html' %}
+</main>
+<img id="scroll-to-top" href="{{ item.link }}"
+                         src="{% static 'parser/images/arrow.svg' %}" alt="Scroll up">
+<div id="products_window">
+    {% if not search_result %}
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span id="close-modal">&times;</span>
+                <h4>No results found for the query: "
+                    {% if search_query|length > 15 %}
+                        {{ search_query|slice:"15" }}...
+                    {% else %}
+                        {{ search_query }}
+                    {% endif %}
+                    "
+                </h4>
+            </div>
+        </div>
+    {% endif %}
     {% if search_result %}
         <div class="products-container">
             {% for item in search_result %}
-                <div class="product">
+                <div class="product" title="{{ item.title }}">
                     <img id='productImage' src="{{ item.picture }}" alt="{{ item.title }}">
                     </script>
                     <p class="product-title">{{ item.title.lower|title }}</p>
@@ -30,7 +53,7 @@
             {% endfor %}
         </div>
     {% endif %}
-</main>
+</div>
 <footer>
 </footer>
 </body>

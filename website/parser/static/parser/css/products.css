@@ -21,7 +21,7 @@
     align-items: center;
     text-align: center;
     padding: 10px;
-    width: 150px;
+    width: 190px;
     height: 300px;
     border-radius: 2rem;
     transition: transform 0.5s;
@@ -37,10 +37,11 @@
 .product-title {
     margin-top: 15px;
     margin-bottom: 5px;
-    font-size: 1.1rem;
     font-weight: bold;
     color: #1b3974;
     height: 25%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #productImage {
@@ -49,7 +50,7 @@
 }
 
 .shop_logo {
-    width: 90%;
+    width: 80%;
     height: 14%;
     margin-top: 10px;
 }
@@ -101,7 +102,7 @@ p {
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 6% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 40%; /* Could be more or less, depending on screen size */
@@ -110,16 +111,39 @@ p {
 }
 
 /* The Close Button */
-.close {
+#close-modal {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
+#close-modal:hover,
+#close-modal:focus {
+    color: #a31010;
     text-decoration: none;
     cursor: pointer;
+}
+
+#scroll-to-top {
+    width: 90px;
+    position: fixed;
+    top: 70px; /* Отступ от верхнего края экрана */
+    left: 18px; /* Отступ от правого края экрана */
+    display: none; /* Скрыть стрелку по умолчанию */
+    z-index: 999; /* Установка z-index для обеспечения отображения поверх других элементов */
+    cursor: pointer;
+    animation: sway 2s ease-in-out infinite alternate; /* Применяем анимацию */
+}
+
+@keyframes sway {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px); /* Качание вверх */
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
