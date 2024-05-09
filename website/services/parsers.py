@@ -9,6 +9,7 @@ from services.categories import CATEGORIES
 from services.db_manager import search_in_datika_db
 
 MAX_ITEMS = 40
+AFFILIATE_PARAMETER = 'source=smartprice'
 
 
 def check_200_status(value: int):
@@ -57,7 +58,7 @@ def parse_tehnomax(search_text, category: str = None):
             else:
                 continue
 
-            link = x.find(class_='product-link').get('href')
+            link = x.find(class_='product-link').get('href') + '?' + AFFILIATE_PARAMETER
             picture = x.find(id=re.compile(r'prod_pic_\d+')).get('data-src')
             res.append({'title': title.replace('\n', ''), 'price': price, 'link': link, 'picture': picture,
                         'shop_name': 'tehnomax'})
@@ -95,15 +96,19 @@ def parse_multicom(search_text, category: str = None):
             title = elem_a.text
             if title.lower().find(search_text.lower()) == -1:
                 continue
-            link = 'https://www.multicom.me' + elem_a.get('href')
+            link = 'https://www.multicom.me' + elem_a.get('href') + '?' + AFFILIATE_PARAMETER
         else:
             continue
 
-        price = item.find(class_='cijenaGotovina')
+        price = item.find(class_='cijenaAkcija') # promotion price
         if price:
             price = price.text
         else:
-            continue
+            price = item.find(class_='cijenaGotovina')
+            if price:
+                price = price.text
+            else:
+                continue
         price = float(re.search(r'\d+(?:\.\d+)?', price)[0])
 
         picture = item.find('img').get('src')
@@ -153,7 +158,7 @@ def parse_datika(search_text: str, category: str = None):
             price = float(re.search(r'\d+(?:\.\d+)?', price)[0])
             picture = 'https://datika.me' + item.find(attrs={"itemprop": "image"}).get('src')
             link = item.find('h5')
-            link = 'https://datika.me' + link.find('a').get('href')
+            link = 'https://datika.me' + link.find('a').get('href') + '?' + AFFILIATE_PARAMETER
             res.append({'title': title, 'price': price, 'link': link, 'picture': picture, 'shop_name': 'datika'})
 
         return res

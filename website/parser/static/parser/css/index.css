@@ -1,41 +1,115 @@
-.categories-section{
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   width: 100%;
+main {
+    height: calc(100vh - 60px); /* Замени headerHeight и footerHeight на фактические значения высоты header и footer */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0D2043;
+}
+
+.categories-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .categories-section p {
-   font-weight: bold;
-   font-size: 1.5rem;
-   color:#0E1E3F;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #0E1E3F;
 }
 
-.categories-container{
-   display: flex;
-   justify-content: center;
-   gap: 100px;
-   padding-bottom: 100px;
+.categories-container {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    padding-bottom: 100px;
 }
 
 .category {
-   padding: 5px;
-   padding-left: 20px;
-   padding-right: 20px;
-   border: 1px solid #0E1E3F;
-   box-shadow: 0px 3px 5px gray;
-   border-radius: 1em;
-   width: 10%;
-   text-align: center;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid #0E1E3F;
+    box-shadow: 0px 3px 5px gray;
+    border-radius: 1em;
+    width: 10%;
+    text-align: center;
 }
 
-.category:hover{
-   border: 1px solid rgb(202, 183, 39);
-   transform: scale(1.01);
-   transition-duration: 0.5s;
+.category:hover {
+    border: 1px solid rgb(202, 183, 39);
+    transform: scale(1.01);
+    transition-duration: 0.5s;
 }
 
-.category img{
-   width: 100%;
+.category img {
+    width: 100%;
+}
+
+.search-text {
+    color: white;
+    font-size: 0.8em;
+    margin-right: 30px;
+    font-style: italic;
+}
+
+.category-text {
+    color: white;
+    font-size: 0.9em;
+    margin-left: 20px;
+    padding-top: 11px;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 8px;
+    font-size: 0.8em;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display: block;
 }

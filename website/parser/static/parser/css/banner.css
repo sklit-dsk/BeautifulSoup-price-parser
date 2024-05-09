@@ -1,7 +1,7 @@
 .banner-container {
     position: relative;
     overflow: hidden;
-    height: 60px; /* Высота вашего баннера */
+    height: 50px; /* Высота вашего баннера */
 }
 
 .banner-gradient {

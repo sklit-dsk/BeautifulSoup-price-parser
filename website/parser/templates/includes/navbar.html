@@ -5,24 +5,11 @@
     <h3 class="main-title"><a href="{% url 'index' %}" class="no-decoration">Smart Price</a></h3>
 </div>
 <div class="search-section">
-    {% if category %}
-        <form action="{% url 'category_view' category_name=category %}" method="GET">
-            <input type="text" name="q" id="main-search-input">
-            <button type="submit" id="main-search-button"><img src="{% static 'parser/images/search.svg' %}" alt=""
-                                                               srcset=""></button>
-        </form>
-    {% else %}
-        <form action="{% url 'search_view' %}" method="GET">
-            <input type="text" name="q" id="main-search-input">
-            <button type="submit" id="main-search-button"><img src="{% static 'parser/images/search.svg' %}" alt=""
-                                                               srcset=""></button>
-        </form>
-    {% endif %}
 </div>
-<div class="category-note">
-    {% if category %}
-        <p class="main-title">Category:&nbsp&nbsp <b>{{ category.capitalize }}</b></p>
-    {% else %}
-        <p class="main-title">Category:&nbsp&nbsp <b>Not selected</b></p>
-    {% endif %}
-</div>
+{#<div class="category-note">#}
+{#    {% if category %}#}
+{#        <p class="main-title">Category:&nbsp&nbsp <b>{{ category.capitalize }}</b></p>#}
+{#    {% else %}#}
+{#        <p class="main-title">Category:&nbsp&nbsp <b>Not selected</b></p>#}
+{#    {% endif %}#}
+{#</div>#}
