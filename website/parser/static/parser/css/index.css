@@ -113,3 +113,8 @@ main {
 .show {
     display: block;
 }
+
+.description-container {
+    width: 760px;
+    text-align: center;
+}

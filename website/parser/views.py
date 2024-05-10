@@ -23,6 +23,10 @@ def index(request: HttpRequest):
     return render(request, 'parser/index.html', {'form': SearchForm()})
 
 
+def about_view(request: HttpRequest):
+    return render(request, 'parser/about.html')
+
+
 def search_view(request: HttpRequest):
     form = SearchForm(request.GET)
     if form.is_valid():

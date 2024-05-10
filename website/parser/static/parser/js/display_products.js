@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     searchForm.addEventListener("submit", function (event) {
         if (searchInput.value.length > 0) {
-            document.querySelector("#main-search-button").style.backgroundImage = "url(static/parser/images/giphy.gif)";
+            document.querySelector("#search-form > div > button").style.backgroundImage = "url(static/parser/images/giphy.gif)";
         }
     });
 });

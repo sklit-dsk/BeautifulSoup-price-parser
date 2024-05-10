@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{% static 'parser/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'parser/css/header.css' %}">
     <link rel="stylesheet" href="{% static 'parser/css/products.css' %}">
+    <link rel="stylesheet" href="{% static 'parser/css/footer.css' %}">
     <link rel="icon" type="image/png" href="{% static 'parser/images/logo.svg' %}">
     <script src="{% static 'parser/js/image_handler.js' %}"></script>
     <script src="{% static 'parser/js/display_products.js' %}"></script>
@@ -22,7 +23,7 @@
     {% include 'includes/search-container.html' %}
 </main>
 <img id="scroll-to-top" href="{{ item.link }}"
-                         src="{% static 'parser/images/arrow.svg' %}" alt="Scroll up">
+     src="{% static 'parser/images/arrow.svg' %}" alt="Scroll up">
 <div id="products_window">
     {% if not search_result %}
         <div id="modal" class="modal">
@@ -42,19 +43,20 @@
     {% if search_result %}
         <div class="products-container">
             {% for item in search_result %}
-                <div class="product" title="{{ item.title }}">
-                    <img id='productImage' src="{{ item.picture }}" alt="{{ item.title }}">
-                    </script>
-                    <p class="product-title">{{ item.title.lower|title }}</p>
-                    <img class="shop_logo" href="{{ item.link }}"
-                         src="{% static 'parser/images/shop_logo/' %}{{ item.shop_name.lower }}.png" alt="">
-                    <p class="product-price">{{ item.price }} €</p>
-                </div>
+                <a href="{{ item.link }}" target="_blank" class="no-decoration">
+                    <div class="product" title="{{ item.title }}">
+                        <img id='productImage' src="{{ item.picture }}" alt="{{ item.title }}">
+                        </script>
+                        <p class="product-title">{{ item.title.lower|title }}</p>
+                        <img class="shop_logo" href="{{ item.link }}"
+                             src="{% static 'parser/images/shop_logo/' %}{{ item.shop_name.lower }}.png" alt="">
+                        <p class="product-price">{{ item.price }} €</p>
+                    </div>
+                </a>
             {% endfor %}
         </div>
     {% endif %}
 </div>
-<footer>
-</footer>
+{% include 'includes/footer.html' %}
 </body>
 </html>

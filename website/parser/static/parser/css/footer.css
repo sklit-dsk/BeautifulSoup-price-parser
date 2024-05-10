@@ -1,0 +1,42 @@
+footer {
+    padding: 20px 0;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    justify-content: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-style: italic;
+}
+
+.footer-content p {
+    margin-left: 30px;
+}
+
+.footer-content a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
+
+.logo-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.x-logo-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.logo-link {
+    margin-left: 10px;
+    margin-top: 2px;
+}
