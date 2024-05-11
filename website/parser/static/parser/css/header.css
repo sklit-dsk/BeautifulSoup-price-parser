@@ -9,12 +9,10 @@ header {
     height: 60px;
     border-bottom: 1px solid black;
     z-index: 1;
+    align-items: center;
 }
 
 .title-section {
-    width: 225px;
-    min-width: 220px;
-    height: 80%;
     margin-left: 40px;
     display: flex;
     justify-content: space-between;
@@ -23,6 +21,12 @@ header {
 
 .main-title {
     font-size: 2em;
+    padding-left: 10px;
+    margin: 0;
+}
+
+.title-section img {
+    height: 38px;
 }
 
 .category-note {
@@ -31,10 +35,6 @@ header {
     display: flex;
     font-size: 0.6em;
     align-items: center;
-}
-
-.title-section img {
-    height: 75%;
 }
 
 #id_q {
@@ -102,16 +102,19 @@ footer {
     border-top: 1px solid black;
 }
 
-#id_category {
-    margin-left: 10px;
-    height: 33px;
-    margin-top: 1px;
-    border-radius: 0.35rem;
-    font: inherit;
-    font-size: 0.9em;
-}
-
 .search-plus-underlined {
     position: relative;
     text-align: center;
+}
+
+.header-element {
+    margin: 0;
+    margin-left: 70px;
+    margin-top: 4px;
+    font-size: 1.5em;
+}
+
+.header-element a {
+    color: inherit;
+    text-decoration: none;
 }

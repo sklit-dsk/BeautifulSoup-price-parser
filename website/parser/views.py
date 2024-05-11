@@ -23,11 +23,18 @@ def index(request: HttpRequest):
     return render(request, 'parser/index.html', {'form': SearchForm()})
 
 
+def about_view(request: HttpRequest):
+    return render(request, 'parser/about.html')
+
+
 def search_view(request: HttpRequest):
     form = SearchForm(request.GET)
+
     if form.is_valid():
         query = form.cleaned_data['q']
         category = form.cleaned_data['category']
+    else:
+        raise Http404
 
     context = {
         'search_result': '',
@@ -37,6 +44,7 @@ def search_view(request: HttpRequest):
     if category == 'none':
         search_result = parse_sources(query)
         search_result.sort(key=lambda x: x['price'])
+        search_result = search_result[:50]
 
         context['search_result'] = search_result
         context['form'] = SearchForm()
