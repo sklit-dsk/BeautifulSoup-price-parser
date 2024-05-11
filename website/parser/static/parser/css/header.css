@@ -102,15 +102,6 @@ footer {
     border-top: 1px solid black;
 }
 
-#id_category {
-    margin-left: 10px;
-    height: 33px;
-    margin-top: 1px;
-    border-radius: 0.35rem;
-    font: inherit;
-    font-size: 0.9em;
-}
-
 .search-plus-underlined {
     position: relative;
     text-align: center;

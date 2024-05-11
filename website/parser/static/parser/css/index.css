@@ -50,6 +50,15 @@ main {
     width: 100%;
 }
 
+#id_category {
+    margin-left: 10px;
+    height: 28px;
+    margin-top: 6px;
+    border-radius: 0.35rem;
+    font: inherit;
+    font-size: 0.9em;
+}
+
 .search-text {
     color: white;
     font-size: 0.8em;
@@ -61,7 +70,6 @@ main {
     color: white;
     font-size: 0.9em;
     margin-left: 20px;
-    padding-top: 11px;
 }
 
 /* Dropdown Button */
