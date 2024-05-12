@@ -3,6 +3,8 @@ import requests
 from fake_useragent import UserAgent
 from urllib.parse import quote
 import re
+import aiohttp
+import asyncio
 
 from services.utils import MulticomEncoder
 from services.categories import CATEGORIES
@@ -66,6 +68,28 @@ def parse_tehnomax(search_text, category: str = None):
         return res
 
 
+async def fetch_picture(session, product_link):
+    async with session.get(product_link, headers={'User-Agent': UserAgent().random}) as response:
+        html = await response.text()
+        soup = BeautifulSoup(html, 'html.parser')
+        article = soup.find(attrs={'id': 'ArtikalSlike'})
+        if article:
+            picture = article.find('img').get('src')
+            if picture and not 'NemaSlike' in picture:
+                return picture
+    return None
+
+
+async def multicom_picture_find(product_link):
+    async with aiohttp.ClientSession() as session:
+        tasks = [fetch_picture(session, product_link) for _ in range(3)]
+        results = await asyncio.gather(*tasks)
+        for picture in results:
+            if picture:
+                return picture
+    return None
+
+
 def parse_multicom(search_text, category: str = None):
     if category:
         response = requests.get(
@@ -100,7 +124,7 @@ def parse_multicom(search_text, category: str = None):
         else:
             continue
 
-        price = item.find(class_='cijenaAkcija') # promotion price
+        price = item.find(class_='cijenaAkcija')  # promotion price
         if price:
             price = price.text
         else:
@@ -112,6 +136,8 @@ def parse_multicom(search_text, category: str = None):
         price = float(re.search(r'\d+(?:\.\d+)?', price)[0])
 
         picture = item.find('img').get('src')
+        if (not picture) or ('NemaSlike' in picture):
+            picture = asyncio.run(multicom_picture_find(link))
 
         res.append({'title': title, 'price': price, 'link': link, 'picture': picture, 'shop_name': 'multicom'})
 
@@ -131,7 +157,6 @@ def parse_datika(search_text: str, category: str = None):
             headers={'User-Agent': UserAgent().random},
             cookies={'products_per_page': '100'}
         )
-
 
     if check_200_status(response.status_code):
         soup = BeautifulSoup(response.content, "html.parser")

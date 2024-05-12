@@ -156,3 +156,51 @@
         transform: translateY(0);
     }
 }
+
+.tools-container {
+    height: 50px;
+    background-color: #F3F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sort-by-text {
+    margin-left: 50px;
+    margin-right: 30px;
+    font-weight: bold;
+}
+
+.price-range {
+    display: flex;
+    align-items: center;
+}
+
+.price-range label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.price-range input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 90px;
+    margin-right: 10px;
+    height: 9px;
+    text-align: center;
+}
+
+.sort-button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.sort-button:hover {
+    background-color: #45a049;
+}
