@@ -24,6 +24,32 @@
 </main>
 <img id="scroll-to-top" href="{{ item.link }}"
      src="{% static 'parser/images/arrow.svg' %}" alt="Scroll up">
+{% if search_result %}
+    <div class="tools-container">
+
+        <div class="price-range">
+            <label for="minPrice">From:</label>
+            <div class="input-with-euro">
+                <input type="number" id="minPrice" placeholder="Min Price">
+                <span>€</span>
+            </div>
+            <label for="maxPrice">To:</label>
+            <div class="input-with-euro">
+                <input type="number" id="maxPrice" placeholder="Max Price">
+                <span>€</span>
+            </div>
+            <button>Go</button>
+        </div>
+        <div class="sort-items">
+            <p class="sort-by-text">Sort by</p>
+            <button onclick="sortElements(true)">Lowest price</button>
+            <button onclick="sortElements(false)">Highest price</button>
+        </div>
+        <button class="reset-btn">
+            Reset
+        </button>
+    </div>
+{% endif %}
 <div id="products_window">
     {% if not search_result %}
         <div id="modal" class="modal">
@@ -46,7 +72,6 @@
                 <a href="{{ item.link }}" target="_blank" class="no-decoration">
                     <div class="product" title="{{ item.title }}">
                         <img id='productImage' src="{{ item.picture }}" alt="{{ item.title }}">
-                        </script>
                         <p class="product-title">{{ item.title.lower|title }}</p>
                         <img class="shop_logo" href="{{ item.link }}"
                              src="{% static 'parser/images/shop_logo/' %}{{ item.shop_name.lower }}.png" alt="">
