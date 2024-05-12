@@ -8,10 +8,11 @@
 .products-container {
     width: 80%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); /* Замените 200px на минимальную ширину столбца */
+    gap: 20px;
     gap: 20px;
     padding-bottom: 30px;
-    padding-top: 12px;
+    padding-top: 20px;
 }
 
 .product {
@@ -135,10 +136,10 @@
 }
 
 #scroll-to-top {
-    width: 90px;
+    width: 7%;
     position: fixed;
     top: 70px; /* Отступ от верхнего края экрана */
-    left: 18px; /* Отступ от правого края экрана */
+    left: 12px; /* Отступ от правого края экрана */
     display: none; /* Скрыть стрелку по умолчанию */
     z-index: 999; /* Установка z-index для обеспечения отображения поверх других элементов */
     cursor: pointer;
@@ -186,9 +187,12 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 90px;
-    margin-right: 10px;
     height: 9px;
     text-align: center;
+}
+
+.input-with-euro {
+    margin-right: 13px;
 }
 
 .sort-button {
@@ -203,4 +207,12 @@
 
 .sort-button:hover {
     background-color: #45a049;
+}
+
+.sort-items{
+    display: flex;
+}
+
+.reset-btn {
+    margin-left: 40px;
 }

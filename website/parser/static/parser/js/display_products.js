@@ -1,4 +1,22 @@
 let main;
+let minPrice;
+let maxPrice;
+
+document.addEventListener("DOMContentLoaded", function () {
+    let products = document.querySelectorAll(".products-container a");
+
+    // Находим минимальное и максимальное значения при загрузке страницы
+    Array.from(products).forEach(product => {
+        let priceText = product.querySelector(".product-price").textContent;
+        let price = parseFloat(priceText.replace(" €", ""));
+        if (minPrice === undefined || price < minPrice) {
+            minPrice = price;
+        }
+        if (maxPrice === undefined || price > maxPrice) {
+            maxPrice = price;
+        }
+    });
+})
 
 document.addEventListener("DOMContentLoaded", function () {
     scrollToTop = document.querySelector('#scroll-to-top')
@@ -77,24 +95,10 @@ function sortElements(ascending = true) {
 }
 
 
+// From ... To ... element
 document.addEventListener("DOMContentLoaded", function () {
-    let minPrice, maxPrice;
-
     let minPriceInput = document.getElementById("minPrice");
     let maxPriceInput = document.getElementById("maxPrice");
-    let products = document.querySelectorAll(".products-container a");
-
-    // Находим минимальное и максимальное значения при загрузке страницы
-    Array.from(products).forEach(product => {
-        let priceText = product.querySelector(".product-price").textContent;
-        let price = parseFloat(priceText.replace(" €", ""));
-        if (minPrice === undefined || price < minPrice) {
-            minPrice = price;
-        }
-        if (maxPrice === undefined || price > maxPrice) {
-            maxPrice = price;
-        }
-    });
 
     // Устанавливаем значения в поля "от" и "до"
     minPriceInput.value = minPrice;
@@ -121,8 +125,32 @@ document.addEventListener("DOMContentLoaded", function () {
             filterProducts(minPrice, maxPrice);
         }
     });
+});
 
-    function filterProducts(minPrice, maxPrice) {
+document.addEventListener("DOMContentLoaded", function() {
+    let sortButtons = document.querySelectorAll(".sort-items button");
+    let minPriceInput = document.getElementById("minPrice");
+    let maxPriceInput = document.getElementById("maxPrice");
+
+    // Добавляем обработчик события для кнопки сброса
+    document.querySelector(".reset-btn").addEventListener("click", function() {
+        // Сбрасываем значения полей ввода на пустые
+        minPriceInput.value = minPrice;
+        maxPriceInput.value = maxPrice;
+
+        // Сбрасываем выделение кнопок сортировки
+        sortButtons.forEach(button => {
+            button.classList.remove("active");
+        });
+
+        // Вызываем функцию для сортировки по умолчанию
+        filterProducts(minPrice, maxPrice);
+        sortElements(true);
+    });
+});
+
+function filterProducts(minPrice, maxPrice) {
+        let products = document.querySelectorAll(".products-container a");
         products.forEach(product => {
             let priceText = product.querySelector(".product-price").textContent;
             let price = parseFloat(priceText.replace(" €", ""));
@@ -133,7 +161,3 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-});
-
-
-

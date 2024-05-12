@@ -29,14 +29,25 @@
 
         <div class="price-range">
             <label for="minPrice">From:</label>
-            <input type="number" id="minPrice" placeholder="Min Price">
+            <div class="input-with-euro">
+                <input type="number" id="minPrice" placeholder="Min Price">
+                <span>€</span>
+            </div>
             <label for="maxPrice">To:</label>
-            <input type="number" id="maxPrice" placeholder="Max Price">
+            <div class="input-with-euro">
+                <input type="number" id="maxPrice" placeholder="Max Price">
+                <span>€</span>
+            </div>
             <button>Go</button>
         </div>
-        <p class="sort-by-text">Sort by</p>
-        <button onclick="sortElements(true)">Lowest price</button>
-        <button onclick="sortElements(false)">Highest price</button>
+        <div class="sort-items">
+            <p class="sort-by-text">Sort by</p>
+            <button onclick="sortElements(true)">Lowest price</button>
+            <button onclick="sortElements(false)">Highest price</button>
+        </div>
+        <button class="reset-btn">
+            Reset
+        </button>
     </div>
 {% endif %}
 <div id="products_window">
