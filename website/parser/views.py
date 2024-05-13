@@ -4,7 +4,7 @@ from django.http import Http404
 
 from services.parsers import *
 from services.categories import CATEGORIES
-from parser.forms import SearchForm
+from parser.forms import SearchForm, CommentForm
 
 MAX_ITEMS = 70
 
@@ -28,6 +28,15 @@ def index(request: HttpRequest):
 
 def about_view(request: HttpRequest):
     return render(request, 'parser/about.html')
+
+
+def contact_view(request: HttpRequest):
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        print(form.cleaned_data)
+        return render(request, 'parser/contact.html', {'form_sent': True})
+
+    return render(request, 'parser/contact.html', {'comment_form': CommentForm})
 
 
 def search_view(request: HttpRequest):

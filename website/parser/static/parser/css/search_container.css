@@ -1,0 +1,104 @@
+#id_q {
+    position: relative;
+    width: 400px;
+    height: 10px;
+    padding: 12px;
+    border: 2px solid #ccc;
+    text-indent: 14px;
+    font-size: 1.2em;
+    border-radius: 1em;
+    background: linear-gradient(to right, #d9d9d9, #f8f8f8);
+    font-size: 16px;
+    color: black;
+    outline: none;
+    transition: box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, transform 0.3s ease;
+    transform-style: preserve-3d;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.2) inset; /* Improved box-shadow for a realistic feel */
+}
+
+#id_q:focus,
+#id_q:not(:placeholder-shown) {
+    transform: rotateX(20deg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.2) inset; /* Improved box-shadow on focus */
+}
+
+#id_q:focus + .label,
+#id_q:not(:placeholder-shown) + .label {
+    transform: translateY(-120%) scale(0.8);
+    font-size: 12px;
+    color: #4caf50;
+    text-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
+}
+
+#id_q:not(:focus):not(:placeholder-shown) + .clear-button {
+    opacity: 1;
+}
+
+
+#id_q:focus + .shine {
+    opacity: 1;
+}
+
+#id_q:focus + .search-icon {
+    color: #4caf50;
+    transform: translateY(-50%) scale(1.1);
+    filter: drop-shadow(0 0 5px rgba(76, 175, 80, 0.6));
+}
+
+@keyframes inputPulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+#id_q:focus {
+    animation: inputPulse 0.5s ease;
+}
+
+
+#loading-gif {
+    width: 30px;
+    height: 30px; /* Устанавливаем желаемую высоту */
+    border: none; /* Удаляем границу */
+    overflow: hidden; /* Скрываем скроллбары */
+    display: none;
+}
+
+#id_category {
+    margin-left: 10px;
+    height: 28px;
+    margin-top: 6px;
+    border-radius: 0.35rem;
+    font: inherit;
+    font-size: 0.9em;
+    appearance: none; /* Скрыть стандартный вид выпадающего списка */
+    -webkit-appearance: none; /* Для WebKit браузеров */
+    -moz-appearance: none; /* Для Mozilla браузеров */
+    padding-right: 40px; /* Добавить место для стрелочки */
+    padding-left: 15px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l6-6H4l6 6z" fill="%23333"/></svg>'); /* Добавить кастомную стрелочку */
+    background-repeat: no-repeat;
+    background-position: right 0.7em center;
+    background-size: 0.9em;
+}
+
+#id_category option:checked {
+    font-weight: bold;
+
+}
+
+#id_category:focus {
+    animation: inputPulse 0.5s ease;
+    outline: none;
+}
+
+.category-text {
+    color: white;
+    font-size: 0.9em;
+    margin-left: 20px;
+}

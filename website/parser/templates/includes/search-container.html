@@ -1,3 +1,7 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'parser/css/search_container.css' %}">
+
+
 <div class="search-container">
     <form id="search-form" action="{% url 'search_view' %}" method="GET">
         <div class="search-input-wrapper">

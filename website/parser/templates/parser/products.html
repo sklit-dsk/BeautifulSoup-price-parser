@@ -26,7 +26,6 @@
      src="{% static 'parser/images/arrow.svg' %}" alt="Scroll up">
 {% if search_result %}
     <div class="tools-container">
-
         <div class="price-range">
             <label for="minPrice">From:</label>
             <div class="input-with-euro">
@@ -38,16 +37,35 @@
                 <input type="number" id="maxPrice" placeholder="Max Price">
                 <span>€</span>
             </div>
-            <button>Go</button>
+            <button class="tool-btn">
+                <span class="shadow"></span>
+                <span class="edge"></span>
+                <span class="front text">Go</span>
+            </button>
         </div>
         <div class="sort-items">
             <p class="sort-by-text">Sort by</p>
-            <button onclick="sortElements(true)">Lowest price</button>
-            <button onclick="sortElements(false)">Highest price</button>
+            <button class="tool-btn" onclick="sortElements(true)">
+                <span class="shadow"></span>
+                <span class="edge"></span>
+                <span class="front text">Lowest price</span>
+            </button>
+            <button class="tool-btn right-sort-btn" onclick="sortElements(false)">
+                <span class="shadow"></span>
+                <span class="edge"></span>
+                <span class="front text">Highest price</span>
+            </button>
+            {#            <button onclick="sortElements(true)">Lowest price</button>#}
+            {#            <button onclick="sortElements(false)">Highest price</button>#}
         </div>
-        <button class="reset-btn">
-            Reset
+        <button class="reset-btn tool-btn">
+            <span class="shadow"></span>
+            <span class="edge"></span>
+            <span class="front text">Reset</span>
         </button>
+        <div class="result-counter">
+            <p>Results: {{ search_result|length }}</p>
+        </div>
     </div>
 {% endif %}
 <div id="products_window">

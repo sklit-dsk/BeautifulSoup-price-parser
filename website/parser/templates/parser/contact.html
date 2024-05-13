@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'parser/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'parser/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'parser/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'parser/css/products.css' %}">
+    <link rel="stylesheet" href="{% static 'parser/css/footer.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'parser/images/logo.svg' %}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Price Main</title>
+</head>
+<body>
+<header>
+    {% include 'includes/navbar.html' %}
+</header>
+<main>
+    <div class="description-container">
+        {% if form_sent %}
+            <p class="thanks-text">
+                You have successfully sent your comment! Thank you for your engagement!
+            </p>
+        {% else %}
+            <h2 class="about-title">Contact us</h2>
+            <p class="about-text">
+                Please, share your experience to help us improve our product.
+            </p>
+            <form class="comment-form" action="{% url 'contact' %}" method="POST">
+                {% csrf_token %}
+                {{ comment_form }}
+                <button type="submit">Send</button>
+            </form>
+        {% endif %}
+    </div>
+</main>
+{% include 'includes/footer.html' %}
+</body>
+</html>
