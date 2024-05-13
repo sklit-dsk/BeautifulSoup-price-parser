@@ -21,8 +21,33 @@ main {
 }
 
 .description-container {
-    width: 760px;
+    width: 50%;
     text-align: center;
+}
+
+.ds2 {
+    margin-top: 50px;
+}
+
+.partnerships {
+    display: flex;
+    justify-content: space-between;
+}
+
+.partnerships img {
+    margin-right: 30px; /* Расстояние между картинками */
+    width: 200px;
+    height: 60px;
+    margin-top: 20px;
+}
+
+/* Убираем отступ для первой картинки */
+.partnerships image:first-child {
+    margin-left: 0;
+}
+
+.about-container {
+    display: flex;
 }
 
 /* Скрыть стандартный скроллбар */

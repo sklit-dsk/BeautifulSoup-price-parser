@@ -19,10 +19,21 @@
 </header>
 <main>
     <div class="description-container">
-        <h2 class="about-title">Contact us</h2>
-        <p class="about-text">
-            Here is gonna be contact form.
-        </p>
+        {% if form_sent %}
+            <p class="thanks-text">
+                You have successfully sent your comment! Thank you for your engagement!
+            </p>
+        {% else %}
+            <h2 class="about-title">Contact us</h2>
+            <p class="about-text">
+                Please, share your experience to help us improve our product.
+            </p>
+            <form class="comment-form" action="{% url 'contact' %}" method="POST">
+                {% csrf_token %}
+                {{ comment_form }}
+                <button type="submit">Send</button>
+            </form>
+        {% endif %}
     </div>
 </main>
 {% include 'includes/footer.html' %}

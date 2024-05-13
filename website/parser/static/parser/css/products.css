@@ -23,7 +23,7 @@
     text-align: center;
     padding: 10px;
     width: 160px;
-    height: 290px;
+    height: 304px;
     border-radius: 2rem;
     transition: transform 0.5s;
 }
@@ -38,7 +38,6 @@
 .product-title {
     margin-top: 15px;
     margin-bottom: 5px;
-    font-weight: bold;
     color: #1b3974;
     height: 25%;
     overflow: hidden;
@@ -275,7 +274,7 @@
 .tool-btn .front {
     display: block;
     position: relative;
-    padding: 8px 22px; /* уменьшение внутренних отступов */
+    padding: 5px 22px; /* уменьшение внутренних отступов */
     border-radius: 12px;
     font-size: inherit; /* наследование размера шрифта */
     color: hsl(200deg 5% 20%); /* изменение цвета на серый */

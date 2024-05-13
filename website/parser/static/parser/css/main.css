@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Saira+Semi+Condensed&display=swap');
+
 * {
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: 'Saira Semi Condensed', sans-serif;
 }
 
 body {
