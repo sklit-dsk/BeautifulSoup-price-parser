@@ -8,11 +8,11 @@
 .products-container {
     width: 80%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); /* Замените 200px на минимальную ширину столбца */
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
     gap: 20px;
     gap: 20px;
     padding-bottom: 30px;
-    padding-top: 20px;
+    padding-top: 40px;
 }
 
 .product {
@@ -23,7 +23,7 @@
     text-align: center;
     padding: 10px;
     width: 160px;
-    height: 300px;
+    height: 290px;
     border-radius: 2rem;
     transition: transform 0.5s;
 }
@@ -136,10 +136,10 @@
 }
 
 #scroll-to-top {
-    width: 7%;
+    width: 6%;
     position: fixed;
-    top: 70px; /* Отступ от верхнего края экрана */
-    left: 12px; /* Отступ от правого края экрана */
+    top: 30px; /* Отступ от верхнего края экрана */
+    right: 13px; /* Отступ от правого края экрана */
     display: none; /* Скрыть стрелку по умолчанию */
     z-index: 999; /* Установка z-index для обеспечения отображения поверх других элементов */
     cursor: pointer;
@@ -151,7 +151,7 @@
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-5px); /* Качание вверх */
+        transform: translateY(-8px); /* Качание вверх */
     }
     100% {
         transform: translateY(0);
@@ -160,6 +160,7 @@
 
 .tools-container {
     height: 50px;
+    padding-top: 20px;
     background-color: #F3F2F2;
     display: flex;
     justify-content: center;
@@ -167,8 +168,7 @@
 }
 
 .sort-by-text {
-    margin-left: 50px;
-    margin-right: 30px;
+    padding-right: 15px;
     font-weight: bold;
 }
 
@@ -211,8 +211,109 @@
 
 .sort-items{
     display: flex;
+    margin-left: 40px;
+    align-items: center;
 }
 
 .reset-btn {
     margin-left: 40px;
 }
+
+.nav-elements {
+    display: flex;
+    margin-left: auto;
+    margin-right: 50px;
+}
+
+.result-counter {
+    margin-left: 40px;
+}
+
+.result-counter p {
+    font-weight: bold;
+}
+
+
+/* tool button */
+.tool-btn {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    touch-action: manipulation;
+    font-size: 0.9rem; /* уменьшение размера шрифта */
+    height: 32px;
+}
+
+.tool-btn .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: hsl(0deg 0% 70% / 0.25); /* изменение цвета на серый */
+    will-change: transform;
+    transform: translateY(2px);
+    transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.tool-btn .edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(to left, hsl(200deg 5% 40%) 0%, hsl(200deg 5% 60%) 8%, hsl(200deg 5% 60%) 92%, hsl(200deg 5% 40%) 100%);
+}
+
+.tool-btn .front {
+    display: block;
+    position: relative;
+    padding: 8px 22px; /* уменьшение внутренних отступов */
+    border-radius: 12px;
+    font-size: inherit; /* наследование размера шрифта */
+    color: hsl(200deg 5% 20%); /* изменение цвета на серый */
+    background: hsl(200deg 5% 90%);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.tool-btn:hover {
+    filter: brightness(110%);
+}
+
+.tool-btn:hover .front {
+    transform: translateY(-6px);
+    transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.tool-btn:active .front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+
+.tool-btn:hover .shadow {
+    transform: translateY(4px);
+    transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.tool-btn:active .shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+
+.tool-btn:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.right-sort-btn {
+    margin-left: 8px;
+}
+

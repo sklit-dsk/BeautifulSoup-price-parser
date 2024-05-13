@@ -1,4 +1,5 @@
 let main;
+let header;
 let minPrice;
 let maxPrice;
 
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     scrollToTop = document.querySelector('#scroll-to-top')
     main = document.querySelector('main');
+    header = document.querySelector('header');
 
     window.addEventListener('scroll', toggleScrollToTop);
     scrollToTop.addEventListener('click', scrollToTopFunction);
@@ -28,14 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // scrolling
 document.addEventListener("DOMContentLoaded", function () {
-    let productsWindow = document.getElementById("products_window");
+    let toolsWindow = document.querySelector(".tools-container");
     let headerHeight = document.querySelector("header").offsetHeight; // Получаем высоту header
 
     let product = document.getElementsByClassName("product");
 
     if (product.length > 0) {
         window.scrollTo({
-            top: productsWindow.getBoundingClientRect().top + window.scrollY - headerHeight,
+            top: toolsWindow.getBoundingClientRect().top + window.scrollY,
             behavior: "smooth"
         });
     }
@@ -65,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Scroll up
 
 function toggleScrollToTop() {
-    if (window.scrollY + 5 >= main.offsetHeight) {
+    if (window.scrollY + 5 >= main.offsetHeight + header.offsetHeight) {
         scrollToTop.style.display = 'block';
     } else {
         scrollToTop.style.display = 'none';

@@ -30,6 +30,10 @@ def about_view(request: HttpRequest):
     return render(request, 'parser/about.html')
 
 
+def contact_view(request: HttpRequest):
+    return render(request, 'parser/contact.html')
+
+
 def search_view(request: HttpRequest):
     form = SearchForm(request.GET)
 

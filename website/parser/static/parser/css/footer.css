@@ -45,3 +45,7 @@ footer {
     text-decoration: underline;
     cursor: pointer;
 }
+
+p.first-footer-element {
+    margin-left: 0;
+}

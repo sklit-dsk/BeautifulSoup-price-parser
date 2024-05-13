@@ -1,5 +1,4 @@
 header {
-    position: sticky;
     left: 0;
     top: 0;
     background-color: #0E1E3F;
@@ -37,15 +36,6 @@ header {
     align-items: center;
 }
 
-#id_q {
-    text-indent: 20px;
-    font-size: 1.2em;
-    border-radius: 1em;
-    width: 400px;
-    height: 30px;
-    margin-bottom: 5px;
-}
-
 #search-form {
     display: flex;
 }
@@ -66,7 +56,7 @@ header {
 .search-input-wrapper button {
     border: 0;
     position: absolute;
-    top: 3px;
+    top: 5px;
     right: 9px;
     height: 26px;
     width: 26px;
@@ -79,15 +69,6 @@ header {
 
 #main-search-button img {
     width: 30px;
-}
-
-
-#loading-gif {
-    width: 30px;
-    height: 30px; /* Устанавливаем желаемую высоту */
-    border: none; /* Удаляем границу */
-    overflow: hidden; /* Скрываем скроллбары */
-    display: none;
 }
 
 .no-decoration {
